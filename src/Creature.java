@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Creature {
 
@@ -74,7 +74,7 @@ public class Creature {
         userSearch = scan.nextLine();
         userSearch = userSearch.substring(0,1).toUpperCase() + userSearch.substring(1).toLowerCase();
         for (Creature cr : arrl) {
-            if (  cr.getName().equals(userSearch)  ) {
+            if (cr.getName().equals(userSearch)) {
                 System.out.println(userSearch + " is in your collection!");
                 return;
             }
@@ -120,7 +120,7 @@ public class Creature {
 
         collection.remove(goblin);
 
-        System.out.println("\nUpdated Collection");
+        System.out.println("\nUpdated Collection:");
         displayArrayListCreatures(collection);
 
         System.out.println("" + "\nTotal Creatures: " + collection.size());
@@ -137,5 +137,16 @@ public class Creature {
 
         System.out.println("\nRare Creatures Found:");
         compareArrayLists(rareCreatures, collection);
+
+        // bonus challenge: boss battle
+        Random rand = new Random();
+        int randomCreatureIndex = rand.nextInt(collection.size());
+        System.out.println("\nSelected Creature: " + collection.get(randomCreatureIndex).getName());
+        System.out.println("Power Level: " + collection.get(randomCreatureIndex).getPower());
+        if (collection.get(randomCreatureIndex).getPower() <= 75 ) {
+            System.out.println("Boss Wins!");
+        } else {
+            System.out.println("Boss Defeated!");
+        }
     }
 }
