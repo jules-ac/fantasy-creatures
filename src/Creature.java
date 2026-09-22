@@ -63,14 +63,16 @@ public class Creature {
             }
         } return weakestCreature;
     }
+
     public static void displayArrayListCreatures(ArrayList<Creature> arrl) {
-        for (int i=0;i<arrl.size();i++) {
-            System.out.println(arrl.get(i).getName());
+        for (Creature cr : arrl) {
+            System.out.println(cr.getName());
         }
     }
+
     public static void arrayListScan(ArrayList<Creature> arrl, Scanner scan) {
         String userSearch = "";
-        System.out.print("\nSearch collection for a creature.\nEnter creature name (case insensitive): ");
+        System.out.print("\nSearch collection for a creature.\nEnter creature name: ");
         userSearch = scan.nextLine();
         userSearch = userSearch.substring(0,1).toUpperCase() + userSearch.substring(1).toLowerCase();
         for (Creature cr : arrl) {
@@ -81,6 +83,7 @@ public class Creature {
         }
         System.out.println("Creature not found.");
     }
+
     public static void compareArrayLists(ArrayList<Creature> refArr, ArrayList<Creature> baseArr) {
         for (int i=0;i<refArr.size();i++) {
             for (int y=0;y<baseArr.size();y++) {
@@ -90,6 +93,19 @@ public class Creature {
             }
         }
     }
+
+    public static void randomCreatureBossFight(ArrayList<Creature> arrl) {
+        Random rand = new Random();
+        int randomCreatureIndex = rand.nextInt(arrl.size());
+        System.out.println("\nSelected Creature: " + arrl.get(randomCreatureIndex).getName());
+        System.out.println("Power Level: " + arrl.get(randomCreatureIndex).getPower());
+        if (arrl.get(randomCreatureIndex).getPower() <= 75 ) {
+            System.out.println("Boss Wins!");
+        } else {
+            System.out.println("Boss Defeated!");
+        }
+    }
+
     // main method
     public static void main(String[] args) {
 
@@ -139,14 +155,6 @@ public class Creature {
         compareArrayLists(rareCreatures, collection);
 
         // bonus challenge: boss battle
-        Random rand = new Random();
-        int randomCreatureIndex = rand.nextInt(collection.size());
-        System.out.println("\nSelected Creature: " + collection.get(randomCreatureIndex).getName());
-        System.out.println("Power Level: " + collection.get(randomCreatureIndex).getPower());
-        if (collection.get(randomCreatureIndex).getPower() <= 75 ) {
-            System.out.println("Boss Wins!");
-        } else {
-            System.out.println("Boss Defeated!");
-        }
+        randomCreatureBossFight(collection);
     }
 }

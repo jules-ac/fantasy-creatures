@@ -56,16 +56,14 @@ public class FantasyCreatureManager {
             if (pws[i] == weakestPower) {
                 weakestCreature = crs[i];
                 break;
-            } else {
-                continue;
             }
         } return weakestCreature;
     }
     public static void main(String[] args) {
 
         // part 1: creature power levels
-        int[] powers = {55, 90, 42, 31, 86};
-        String[] creatures = {"Dragon", "Pegasus", "Phoenix", "Ogre", "Unicorn" };
+        int[] powers = {45, 80, 32, 95, 60};
+        String[] creatures = {"Dragon", "Goblin", "Phoenix", "Golem", "Unicorn" };
 
         System.out.println("Power Levels:");
         displayPowerLevels(powers);
